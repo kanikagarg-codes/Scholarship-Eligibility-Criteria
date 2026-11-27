@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scholarship Eligibility Assistant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#home">🎓 ScholarMatch</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+  <nav id="navLinks">
+    <a href="#home">Home</a><a href="#finder">Find Scholarships</a><a href="#how">How It Works</a><a href="#about">About</a>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-text">
+    <span class="pill">🇮🇳 For students across India</span>
+    <h1>Find Scholarships You're Eligible For.</h1>
+    <p>Answer a few simple questions about your studies, family income and category. We compare your profile with a sample set of Indian scholarship schemes and show likely matches, with reasons.</p>
+    <a href="#finder" class="btn">Check My Eligibility →</a>
+  </div>
+  <div class="hero-card" aria-hidden="true">
+    <div class="float">🎓</div><b>3 steps</b><span>Fill form · See matches · Apply officially</span>
+  </div>
+</section>
+
+<section id="finder" class="section">
+  <h2>Find Scholarships</h2>
+  <p class="sub">Fields marked * are required. Nothing leaves your device.</p>
+  <form id="eligForm" class="card form" novalidate>
+    <label>Student name (optional)<input id="name" type="text" maxlength="50" autocomplete="off"></label>
+    <label>State / Union Territory *<select id="state" required></select><small class="err" id="e-state"></small></label>
+    <label>Current education level *
+      <select id="level" required><option value="">Select…</option><option>Class 10</option><option>Class 12</option><option>Diploma</option><option>Undergraduate</option><option>Postgraduate</option></select>
+      <small class="err" id="e-level"></small></label>
+    <label>Course / stream<input id="course" type="text" placeholder="e.g. B.Tech CSE, Science" maxlength="60"></label>
+    <label><span id="prevLabel">Last qualifying exam percentage</span><input id="prev" type="number" min="0" max="100" step="0.01" placeholder="e.g. 78.5"><small class="err" id="e-prev"></small></label>
+    <label>Current academic percentage (Diploma / UG / PG)<input id="current" type="number" min="0" max="100" step="0.01" placeholder="CGPA × 9.5 if unsure"><small class="err" id="e-current"></small></label>
+    <label>Annual family income (₹) *<input id="income" type="number" min="0" step="1000" placeholder="e.g. 250000" required><small class="err" id="e-income"></small></label>
+    <label>Category *
+      <select id="category" required><option value="">Select…</option><option>General</option><option>OBC</option><option>SC</option><option>ST</option><option>EWS</option></select>
+      <small class="err" id="e-category"></small></label>
+    <label>Gender (optional – used only for girl-specific schemes)<select id="gender"><option value="">Prefer not to say</option><option>Female</option><option>Male</option><option>Other</option></select></label>
+    <label>Institution type<select id="inst"><option value="">Not sure</option><option>Government</option><option>Private</option></select></label>
+    <label>Person with disability? (optional)<select id="disability"><option value="">Prefer not to say</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+    <div class="actions"><button class="btn" type="submit">Check My Eligibility</button><button class="btn ghost" type="button" id="resetBtn">Reset</button></div>
+  </form>
+  <p class="note">🔒 Privacy: this prototype runs entirely in your browser. Your details are not sent to any server and are not saved.</p>
+</section>
+
+<section id="results" class="section" hidden>
+  <div class="loader" id="loader" hidden><div class="spin"></div>Matching scholarships…</div>
+  <div id="resultBody" hidden>
+    <h2 id="greeting"></h2>
+    <p class="sub" id="count"></p>
+    <div class="warn">⚠️ Results are <b>estimates for guidance only</b>, not confirmed eligibility or availability. The Match Score shows how well your entered details fit a scheme's criteria – it is <b>not</b> the probability of getting a scholarship. Always check the official notification.</div>
+    <div class="filters card">
+      <label>Level<select id="fLevel"><option value="">All</option></select></label>
+      <label>Type<select id="fType"><option value="">All</option></select></label>
+      <label>Provider<select id="fProv"><option value="">All</option></select></label>
+    </div>
+    <div id="cards" class="grid"></div>
+    <div class="actions"><button class="btn" id="againBtn">✏️ Check Again</button><button class="btn ghost" id="printBtn">🖨️ Print / Save as PDF</button></div>
+  </div>
+</section>
+
+<section id="how" class="section alt">
+  <h2>How It Works</h2>
+  <div class="grid three">
+    <div class="card step"><span>1</span><h3>Enter your details</h3><p>Fill in education, income and category.</p></div>
+    <div class="card step"><span>2</span><h3>We compare</h3><p>Your profile is checked against each scheme's criteria.</p></div>
+    <div class="card step"><span>3</span><h3>Verify &amp; apply</h3><p>Confirm on the official portal and apply.</p></div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <h2>About</h2>
+  <p class="sub">Scholarship Eligibility Assistant is a college HTML/CSS/JavaScript project. The dataset is a small demonstration sample – criteria change every year, so use the official links.</p>
+  <h3>FAQ</h3>
+  <details class="card"><summary>Is a high match score a guarantee?</summary><p>No. It only shows how many criteria your entered data satisfies.</p></details>
+  <details class="card"><summary>Why "Needs Verification"?</summary><p>Either you left a required field blank, or the scheme is a demonstration entry whose current rules aren't verified.</p></details>
+  <details class="card"><summary>Is my data stored?</summary><p>No. Everything is processed locally in your browser and nothing is saved.</p></details>
+  <details class="card"><summary>Where do I apply?</summary><p>Use the official link on each card, such as the National Scholarship Portal.</p></details>
+</section>
+</main>
+
+<footer><p>© 2026 ScholarMatch · Educational prototype · Not affiliated with any government body.</p><p><a href="#home">Back to top ↑</a></p></footer>
+<script src="script.js"></script>
+</body>
+</html>
